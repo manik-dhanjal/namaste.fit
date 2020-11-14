@@ -84,7 +84,7 @@ const events=[
         mentor:"jessi laverl"
     },
     {
-        timestamp:"Thu Nov 12 2020 17:09:17 GMT+0530 (India Standard Time)",
+        timestamp:"Thu Nov 12 2021 17:09:17 GMT+0530 (India Standard Time)",
         name:"this is dummy 3",
         id:"s3",
         price:66,

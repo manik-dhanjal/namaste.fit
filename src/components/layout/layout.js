@@ -5,11 +5,16 @@ import {ReactComponent as Logo} from "../../assets/Life Yoga.svg"
 // import {useEventUpdateDay,useEventUpdateMonth,useEvents} from "../context/events.context"
 // import Calendar from 'react-calendar';
 const Div = styled.div`
+background:#333D47;
+min-height:100vh;
 .logo{
     width:100px;
     svg{
         width:100%;
     }
+}
+nav.container{
+    padding-top:15px;
 }
 .container{
     width:100%;
@@ -21,6 +26,7 @@ const Div = styled.div`
         padding:0px 30px;
     }
 }
+
 `
 const Layout = ({children}) => {
     // const NowDate =new Date();
@@ -45,7 +51,7 @@ const Layout = ({children}) => {
     return (
         <Div>
             <header>
-                <nav>
+                <nav className="container">
                     <div className="logo">
                         <Logo/>
                     </div>
