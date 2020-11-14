@@ -1,13 +1,15 @@
-import React from 'react'
+import React ,{useState} from 'react'
 import styled from "styled-components"
 import {ReactComponent as Boy} from "../../assets/boy.svg"
+
 const Div = styled.div`
 display:flex;
-max-width:450px;
+max-width:700px;
 background:#404953;
 border-radius:10px;
 margin:20px 0px;
 width:100%;
+transition:1s ease;
 .content{
     border-left:2px solid #333D47;
     padding:15px 20px;
@@ -74,15 +76,25 @@ width:100%;
     margin-top: -0.3em;
     color:#99E14E;
 }
+.popup{
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
 `
 const SingleEvent = ({data}) => {
     const timeConverter = (stamp) => {
         var time = new Date(stamp).toLocaleTimeString('en-US', { hour: 'numeric', hour12: true, minute: 'numeric' });
         return time;
       }
+      const [popupState,setPopupState] = useState(false);
     return (
-        <Div>
-            <div className="head">
+        <Div >
+            <div className="head"> 
                 <div className="time">{ timeConverter(data.timestamp) }</div>
                 <div className="time-left">30 mins left</div> 
             </div>
@@ -96,6 +108,9 @@ const SingleEvent = ({data}) => {
                 <div className="price">
                    {data.price?`$${data.price}`:"Free"}
                 </div>
+            </div>
+            <div className="popup" onClick={setPopupState(true)} style={popupState?{display:"none"}:{display:"block"}}>
+wcewe
             </div>
         </Div>
     )

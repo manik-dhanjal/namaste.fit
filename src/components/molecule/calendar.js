@@ -5,12 +5,17 @@ import {useEventUpdateDay,useEventUpdateMonth} from "../context/events.context"
 import Calendar from 'react-calendar';
 
 const Div = styled.div`
+flex-grow: 1;
+display: flex;
+justify-content: end;
 .event-present{
     .custom-date{
         color:#99E14E!important;    
     }
 }
 .calendar{
+    max-width: 500px;
+    width:100%;
    background: transparent;
    border:none;
    .react-calendar__tile--active,.react-calendar__tile--now{
@@ -39,6 +44,7 @@ const Div = styled.div`
         display:flex;
         justify-content:center;
         align-items:center;
+        padding-top:0px;
        abbr{
            display:none;
        }
@@ -51,7 +57,11 @@ const Div = styled.div`
             border-radius:50%;
             min-width:45px;
        } 
+     
    }
+   .react-calendar__tile:enabled:focus{
+    background:transparent;
+}
    .react-calendar__tile--active{
     .custom-date{
         background:#99E14E20;
@@ -81,6 +91,11 @@ const Div = styled.div`
            }
        }
    }
+}
+@media screen and (max-width:1280px){
+.calendar{
+    max-width:450px;
+}
 }
 `
 
