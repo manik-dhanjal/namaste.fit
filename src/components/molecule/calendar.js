@@ -119,7 +119,7 @@ const CalendarMolecule = () => {
         useEffect(()=>{
             UpdateList(value)
         
-        },[value])
+        })
     return (
         <Div>
              <Calendar
