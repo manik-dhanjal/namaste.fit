@@ -107,7 +107,6 @@ const CalendarMolecule = () => {
         const onMonthChange = ({ date }) =>{
              const temp = useEventMonth.reduce((result,event)=>{
                             var time=new Date(event.timestamp)
-                            console.log(result)
                             if(time.getDate()===date.getDate()&&time.getMonth()===date.getMonth()&&time.getFullYear()===date.getFullYear()) return'event-present';
                             return result;
                         },undefined)

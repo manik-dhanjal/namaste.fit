@@ -26,9 +26,11 @@ scrollbar-width: none;
 const Events = () => {
     const events = useEvents()
     return (
-        <Div>
-             {events.map((data)=><SingleEvents data={data}/> )}
-        </Div>
+        <>
+            <Div>
+                {events.map((data)=><SingleEvents data={data} key={data.id}/> )}
+            </Div>
+        </>    
     )
 }
 

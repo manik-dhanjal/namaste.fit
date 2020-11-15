@@ -1,7 +1,8 @@
-import React from 'react'
+import React,{useState} from 'react'
 import styled from "styled-components"
 import {ReactComponent as Boy} from "../../assets/boy.svg"
-
+import Popup from './popup'
+import moment from "moment"
 const Div = styled.div`
 display:flex;
 max-width:700px;
@@ -10,6 +11,7 @@ border-radius:10px;
 margin:20px 0px;
 width:100%;
 transition:1s ease;
+cursor:pointer;
 .content{
     border-left:2px solid #333D47;
     padding:15px 20px;
@@ -91,24 +93,29 @@ const SingleEvent = ({data}) => {
         var time = new Date(stamp).toLocaleTimeString('en-US', { hour: 'numeric', hour12: true, minute: 'numeric' });
         return time;
       }
+    const [popup,setPopup] = useState(false)
     return (
-        <Div >
-            <div className="head"> 
-                <div className="time">{ timeConverter(data.timestamp) }</div>
-                <div className="time-left">30 mins left</div> 
-            </div>
-            <div className="content">
-                <div className="info">
-                    <div className="heading">{data.name}</div>
-                    <div className="author">With <span className="color">{data.mentor}</span></div>
-                    <div className="location">{data.classOn}</div>
-                    <div className="attends"> {data.attended?(<><Boy/> {data.attended} attended</>):null}</div>
+        <>
+            <Div onClick={()=>setPopup(true)}>
+                <div className="head"> 
+                    <div className="time">{ timeConverter(data.timestamp) }</div>
+
+                 <div className="time-left">{ moment(new Date(data.timestamp)).from(new Date())}</div> 
                 </div>
-                <div className="price">
-                   {data.price?`$${data.price}`:"Free"}
+                <div className="content">
+                    <div className="info">
+                        <div className="heading">{data.name}</div>
+                        <div className="author">With <span className="color">{data.mentor}</span></div>
+                        <div className="location">{data.classOn}</div>
+                        <div className="attends"> {data.attended?(<><Boy/> {data.attended} attended</>):null}</div>
+                    </div>
+                    <div className="price">
+                    {data.price?`$${data.price}`:"Free"}
+                    </div>
                 </div>
-            </div>
-        </Div>
+            </Div>
+           {popup?<Popup id={data.id} setPopup={setPopup} />:null} 
+        </>
     )
 }
 
