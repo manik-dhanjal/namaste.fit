@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import styled from "styled-components"
 import {ReactComponent as Boy} from "../../assets/boy.svg"
-import Popup from './popup'
+import Popup from '../molecule/popup'
 import moment from "moment"
 const Div = styled.div`
 display:flex;
