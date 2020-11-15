@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import styled from "styled-components"
 import 'react-calendar/dist/Calendar.css';
 import {useEventUpdateDay,useEventUpdateMonth} from "../context/events.context"
@@ -101,7 +101,7 @@ justify-content: end;
 
 const CalendarMolecule = () => {
         const NowDate =new Date();
-        const [value, onChange] = useState([new Date(NowDate.setHours(0,0,0,0)), new Date( NowDate.setHours(23,59,50,9999))]);
+        const [value, setValue] = useState([new Date(NowDate.setHours(0,0,0,0)), new Date( NowDate.setHours(23,59,50,9999))]);
         const useEventDay = useEventUpdateDay()
         const useEventMonth =useEventUpdateMonth()
         const onMonthChange = ({ date }) =>{
@@ -115,15 +115,12 @@ const CalendarMolecule = () => {
         }
         const UpdateList = (values) =>{
             useEventDay(values)
+            setValue(values)
         }
-        useEffect(()=>{
-            UpdateList(value)
-        
-        })
     return (
         <Div>
              <Calendar
-                onChange={onChange}
+                onChange={UpdateList}
                 value={value}
                 maxDetail="month"
                 showNeighboringMonth = {false}

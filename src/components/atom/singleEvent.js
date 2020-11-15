@@ -1,4 +1,4 @@
-import React ,{useState} from 'react'
+import React from 'react'
 import styled from "styled-components"
 import {ReactComponent as Boy} from "../../assets/boy.svg"
 
@@ -91,7 +91,6 @@ const SingleEvent = ({data}) => {
         var time = new Date(stamp).toLocaleTimeString('en-US', { hour: 'numeric', hour12: true, minute: 'numeric' });
         return time;
       }
-      const [popupState,setPopupState] = useState(false);
     return (
         <Div >
             <div className="head"> 
@@ -108,9 +107,6 @@ const SingleEvent = ({data}) => {
                 <div className="price">
                    {data.price?`$${data.price}`:"Free"}
                 </div>
-            </div>
-            <div className="popup" onClick={setPopupState(true)} style={popupState?{display:"none"}:{display:"block"}}>
-wcewe
             </div>
         </Div>
     )
